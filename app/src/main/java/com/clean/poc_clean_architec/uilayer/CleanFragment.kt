@@ -11,24 +11,24 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.clean.poc_clean_architec.databinding.FragmentDummyBinding
+import com.clean.poc_clean_architec.databinding.FragmentCleanBinding
 import com.clean.poc_clean_architec.domain.model.User
 import com.clean.poc_clean_architec.domain.model.UserUIState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class DummyFragment : Fragment() {
+class CleanFragment : Fragment() {
 
-    private lateinit var binding: FragmentDummyBinding
-    private val mainViewModel: DummyViewModel by activityViewModels()
+    private lateinit var binding: FragmentCleanBinding
+    private val mainViewModel: CleanViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding = FragmentDummyBinding.inflate(layoutInflater, container, false)
+        binding = FragmentCleanBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 

@@ -1,6 +1,6 @@
 package com.clean.poc_clean_architec.hilt
 
-import com.clean.poc_clean_architec.data.mapper.MyMapper
+import com.clean.poc_clean_architec.data.mapper.CleanMapper
 import com.clean.poc_clean_architec.data.repo.GetUserListRepoImpl
 import com.clean.poc_clean_architec.domain.repo.GetUserListRepo
 import com.clean.poc_clean_architec.network.ApiWebService
@@ -14,8 +14,8 @@ import dagger.hilt.android.components.ViewModelComponent
 object AppModule {
 
     @Provides
-    fun provideGetUserListUseCases(apiService: ApiWebService, myMapper: MyMapper): GetUserListRepo {
-        return GetUserListRepoImpl(apiService, myMapper)
+    fun provideGetUserListUseCases(apiService: ApiWebService, cleanMapper: CleanMapper): GetUserListRepo {
+        return GetUserListRepoImpl(apiService, cleanMapper)
     }
 
 

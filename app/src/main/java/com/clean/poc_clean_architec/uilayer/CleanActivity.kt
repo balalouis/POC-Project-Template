@@ -6,22 +6,22 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import com.clean.poc_clean_architec.R
-import com.clean.poc_clean_architec.databinding.DummyMainBinding
+import com.clean.poc_clean_architec.databinding.ActivityCleanBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class DummyActivity : AppCompatActivity() {
-    private lateinit var binding: DummyMainBinding
+class CleanActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityCleanBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DummyMainBinding.inflate(LayoutInflater.from(baseContext))
+        binding = ActivityCleanBinding.inflate(LayoutInflater.from(baseContext))
         setContentView(binding.root)
 
         supportFragmentManager.commit {
-            add<DummyFragment>(R.id.fragmentContainerView)
+            add<CleanFragment>(R.id.fragmentContainerView)
         }
 
     }

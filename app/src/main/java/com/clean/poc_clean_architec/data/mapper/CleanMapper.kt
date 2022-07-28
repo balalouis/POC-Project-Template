@@ -6,7 +6,7 @@ import com.clean.poc_clean_architec.domain.model.User
 import com.clean.poc_clean_architec.domain.model.UserList
 import javax.inject.Inject
 
-class MyMapper @Inject constructor() {
+class CleanMapper @Inject constructor() {
 
     fun toUserList(userListServerData: UserListServerData): UserList {
         return UserList(

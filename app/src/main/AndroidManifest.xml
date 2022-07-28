@@ -5,7 +5,7 @@
 
     <uses-permission-sdk-23 android:name="android.permission.INTERNET" />
     <application
-        android:name=".uilayer.MyApplication"
+        android:name=".uilayer.CleanApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -17,7 +17,7 @@
         tools:targetApi="31">
 
         <activity
-            android:name=".uilayer.DummyActivity"
+            android:name=".uilayer.CleanActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
