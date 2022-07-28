@@ -7,7 +7,10 @@ import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import com.clean.poc_clean_architec.R
 import com.clean.poc_clean_architec.databinding.DummyMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class DummyActivity : AppCompatActivity() {
     private lateinit var binding: DummyMainBinding
 

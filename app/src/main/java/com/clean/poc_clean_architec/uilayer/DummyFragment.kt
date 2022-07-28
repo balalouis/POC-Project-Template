@@ -15,12 +15,15 @@ import com.clean.poc_clean_architec.databinding.FragmentDummyBinding
 import com.clean.poc_clean_architec.databinding.FragmentMainBinding
 import com.clean.poc_clean_architec.model.User
 import com.clean.poc_clean_architec.model.UserUIState
+import com.clean.poc_clean_architec.ui.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class DummyFragment : Fragment() {
 
     private lateinit var binding: FragmentDummyBinding
+    private val dummyViewModel: DummyViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,5 +34,19 @@ class DummyFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        binding.btnClickMe.setOnClickListener {
+            fetchUserList()
+        }
+    }
+
+    private fun fetchUserList() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                dummyViewModel.fetchUserList()
+            }
+        }
+    }
 }
