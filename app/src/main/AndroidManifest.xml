@@ -21,7 +21,7 @@
 
         </activity>
         <activity
-            android:name=".ui.DummyActivity"
+            android:name=".uilayer.DummyActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
