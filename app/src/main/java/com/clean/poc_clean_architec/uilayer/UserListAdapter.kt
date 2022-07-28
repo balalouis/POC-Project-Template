@@ -1,11 +1,11 @@
-package com.clean.poc_clean_architec.ui
+package com.clean.poc_clean_architec.uilayer
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.clean.poc_clean_architec.R
 import com.clean.poc_clean_architec.databinding.UserListViewRowBinding
-import com.clean.poc_clean_architec.model.User
+import com.clean.poc_clean_architec.domain.model.User
 import com.squareup.picasso.Picasso
 
 class UserListAdapter(private var userModelList: List<User>) :

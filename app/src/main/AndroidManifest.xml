@@ -5,7 +5,7 @@
 
     <uses-permission-sdk-23 android:name="android.permission.INTERNET" />
     <application
-        android:name=".ui.MyApplication"
+        android:name=".uilayer.MyApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -15,11 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.POCCleanArchitec"
         tools:targetApi="31">
-        <activity
-            android:name=".ui.MainActivity"
-            android:exported="true">
 
-        </activity>
         <activity
             android:name=".uilayer.DummyActivity"
             android:exported="true">

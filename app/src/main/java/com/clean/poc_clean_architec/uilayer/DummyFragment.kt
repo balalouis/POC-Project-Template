@@ -12,10 +12,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.clean.poc_clean_architec.databinding.FragmentDummyBinding
-import com.clean.poc_clean_architec.databinding.FragmentMainBinding
-import com.clean.poc_clean_architec.model.User
-import com.clean.poc_clean_architec.model.UserUIState
-import com.clean.poc_clean_architec.ui.MainViewModel
+import com.clean.poc_clean_architec.domain.model.User
+import com.clean.poc_clean_architec.domain.model.UserUIState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -23,7 +21,7 @@ import kotlinx.coroutines.launch
 class DummyFragment : Fragment() {
 
     private lateinit var binding: FragmentDummyBinding
-    private val dummyViewModel: DummyViewModel by activityViewModels()
+    private val mainViewModel: DummyViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,19 +32,39 @@ class DummyFragment : Fragment() {
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnClickMe.setOnClickListener {
-            fetchUserList()
-        }
+        fetchUserList()
     }
 
     private fun fetchUserList() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                dummyViewModel.fetchUserList()
+                mainViewModel.fetchUserList()
+                mainViewModel._uiState.collect {
+                    when (it) {
+                        is UserUIState.Success -> {
+                            updateUserListAdapter(it.userList)
+                        }
+                        is UserUIState.Failure -> {
+                            Toast.makeText(context, "" + it.exception.message, Toast.LENGTH_LONG).show()
+                        }
+                        else -> {
+
+                        }
+                    }
+                }
             }
         }
     }
+
+    private fun updateUserListAdapter(userList: List<User>?) {
+        val userListAdapter = userList?.let { UserListAdapter(it) }
+        val userListRecyclerView = binding.myRecyclerView
+        userListRecyclerView.adapter = userListAdapter
+        userListRecyclerView.layoutManager = LinearLayoutManager(activity)
+    }
+
 }
