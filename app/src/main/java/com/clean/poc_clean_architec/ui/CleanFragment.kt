@@ -1,4 +1,4 @@
-package com.clean.poc_clean_architec.uilayer
+package com.clean.poc_clean_architec.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater

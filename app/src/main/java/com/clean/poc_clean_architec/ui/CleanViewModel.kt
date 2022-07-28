@@ -1,6 +1,5 @@
-package com.clean.poc_clean_architec.uilayer
+package com.clean.poc_clean_architec.ui
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.clean.poc_clean_architec.domain.model.UserUIState
