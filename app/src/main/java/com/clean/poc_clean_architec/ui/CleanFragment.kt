@@ -49,7 +49,8 @@ class CleanFragment : Fragment() {
                             updateUserListAdapter(it.userList)
                         }
                         is UserUIState.Failure -> {
-                            Toast.makeText(context, "" + it.exception.message, Toast.LENGTH_LONG).show()
+                            Toast.makeText(context, "" + it.exception.message, Toast.LENGTH_LONG)
+                                .show()
                         }
                         else -> {
 
@@ -61,7 +62,7 @@ class CleanFragment : Fragment() {
     }
 
     private fun updateUserListAdapter(userList: List<User>?) {
-        val userListAdapter = userList?.let { UserListAdapter(it) }
+        val userListAdapter = userList?.let { context?.let { it1 -> UserListAdapter(it1, it) } }
         val userListRecyclerView = binding.myRecyclerView
         userListRecyclerView.adapter = userListAdapter
         userListRecyclerView.layoutManager = LinearLayoutManager(activity)
