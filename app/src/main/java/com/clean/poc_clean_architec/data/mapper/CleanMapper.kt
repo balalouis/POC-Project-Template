@@ -18,6 +18,7 @@ class CleanMapper @Inject constructor() {
 
     private fun toUser(userServerData: UserServerData): User {
         return User(
+            id = userServerData.id,
             userEmail = userServerData.userEmail,
             userFirstName = userServerData.userFirstName,
             userLastName = userServerData.userLastName,

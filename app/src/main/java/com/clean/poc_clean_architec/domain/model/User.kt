@@ -7,6 +7,7 @@ data class UserList(
 )
 
 data class User(
+    var id: Int = 0,
     var userEmail: String? = null,
     var userFirstName: String = "",
     var userLastName: String = "",

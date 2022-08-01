@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CleanViewModel @Inject constructor(var getUserListUseCases: GetUserListUseCases) : ViewModel() {
+class UserViewModel @Inject constructor(var getUserListUseCases: GetUserListUseCases) : ViewModel() {
 
     private var uiState: MutableStateFlow<UserUIState> = MutableStateFlow(UserUIState.Success(emptyList()))
     var _uiState = uiState

@@ -19,9 +19,9 @@
 
     <fragment
         android:id="@+id/userListFragment"
-        android:name="com.clean.poc_clean_architec.ui.CleanFragment"
+        android:name="com.clean.poc_clean_architec.ui.UserListFragment"
         android:label="UserFragment"
-        tools:layout="@layout/fragment_clean">
+        tools:layout="@layout/fragment_user_list">
         <action
             android:id="@+id/action_UserListFragment_to_UserDetailFragment"
             app:destination="@id/userDetailFragment" />

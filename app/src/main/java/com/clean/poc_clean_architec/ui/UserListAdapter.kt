@@ -2,8 +2,14 @@ package com.clean.poc_clean_architec.ui
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.NavController
+import androidx.navigation.NavDirections
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.clean.poc_clean_architec.R
 import com.clean.poc_clean_architec.databinding.UserListViewRowBinding
@@ -34,10 +40,16 @@ class UserListAdapter(private var context: Context, private var userModelList: L
             .into(holder.binding.ivUserImage)
 
         holder.binding.root.setOnClickListener {
-            Toast.makeText(context, ""+userModelList[position].userFirstName, Toast.LENGTH_LONG).show()
+            val userIdArgs = userModelList[position].id
+            val navDirections =
+                UserListFragmentDirections.actionUserListFragmentToUserDetailFragment(userIdArgs)
+            launchScreen(holder.itemView, navDirections)
         }
     }
 
     override fun getItemCount(): Int = userModelList.size
 
+    private fun launchScreen(view: View, action: NavDirections) {
+        view.findNavController().navigate(action)
+    }
 }

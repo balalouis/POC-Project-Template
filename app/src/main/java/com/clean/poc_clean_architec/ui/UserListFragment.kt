@@ -11,24 +11,24 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.clean.poc_clean_architec.databinding.FragmentCleanBinding
+import com.clean.poc_clean_architec.databinding.FragmentUserListBinding
 import com.clean.poc_clean_architec.domain.model.User
 import com.clean.poc_clean_architec.domain.model.UserUIState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class CleanFragment : Fragment() {
+class UserListFragment : Fragment() {
 
-    private lateinit var binding: FragmentCleanBinding
-    private val mainViewModel: CleanViewModel by activityViewModels()
+    private lateinit var binding: FragmentUserListBinding
+    private val mainViewModel: UserViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding = FragmentCleanBinding.inflate(layoutInflater, container, false)
+        binding = FragmentUserListBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
