@@ -52,9 +52,6 @@ class CleanFragment : Fragment() {
                             Toast.makeText(context, "" + it.exception.message, Toast.LENGTH_LONG)
                                 .show()
                         }
-                        else -> {
-
-                        }
                     }
                 }
             }

@@ -34,7 +34,7 @@ class UserListAdapter(private var context: Context, private var userModelList: L
             .into(holder.binding.ivUserImage)
 
         holder.binding.root.setOnClickListener {
-            Toast.makeText(context, "", Toast.LENGTH_LONG)
+            Toast.makeText(context, ""+userModelList[position].userFirstName, Toast.LENGTH_LONG).show()
         }
     }
 
