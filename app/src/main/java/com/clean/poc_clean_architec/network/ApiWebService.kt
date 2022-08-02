@@ -7,7 +7,7 @@ import retrofit2.http.GET
 interface ApiWebService {
 
     @GET("api/users?page=2")
-    suspend fun fetchUserListDummy(): UserListServerData
+    suspend fun fetchUserList(): UserListServerData
 
     @GET("api/users/{id}")
     suspend fun fetchUserDetail(): UserDetailServerData

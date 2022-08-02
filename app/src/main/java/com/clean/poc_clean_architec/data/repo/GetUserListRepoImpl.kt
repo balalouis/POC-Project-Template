@@ -12,6 +12,6 @@ class GetUserListRepoImpl @Inject constructor(
     var cleanMapper: CleanMapper
 ) : GetUserListRepo {
     override suspend fun fetchUserList(): UserList {
-        return cleanMapper.toUserList(apiWebService.fetchUserListDummy())
+        return cleanMapper.toUserList(apiWebService.fetchUserList())
     }
 }
