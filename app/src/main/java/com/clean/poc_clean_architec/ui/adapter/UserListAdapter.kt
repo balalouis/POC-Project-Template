@@ -1,6 +1,5 @@
 package com.clean.poc_clean_architec.ui.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,11 +8,11 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.clean.poc_clean_architec.R
 import com.clean.poc_clean_architec.databinding.UserListViewRowBinding
-import com.clean.poc_clean_architec.domain.model.User
+import com.clean.poc_clean_architec.domain.model.UserUIData
 import com.clean.poc_clean_architec.ui.fragment.UserListFragmentDirections
 import com.squareup.picasso.Picasso
 
-class UserListAdapter(private var context: Context, private var userModelList: List<User>) :
+class UserListAdapter(private var userModelList: List<UserUIData>) :
     RecyclerView.Adapter<UserListAdapter.UserListViewHolder>() {
 
     inner class UserListViewHolder(val binding: UserListViewRowBinding) :

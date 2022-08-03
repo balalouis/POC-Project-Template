@@ -12,7 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.clean.poc_clean_architec.databinding.FragmentUserListBinding
-import com.clean.poc_clean_architec.domain.model.User
+import com.clean.poc_clean_architec.domain.model.UserUIData
 import com.clean.poc_clean_architec.domain.model.UserUIState
 import com.clean.poc_clean_architec.ui.adapter.UserListAdapter
 import com.clean.poc_clean_architec.ui.viewmodel.UserViewModel
@@ -60,8 +60,8 @@ class UserListFragment : Fragment() {
         }
     }
 
-    private fun updateUserListAdapter(userList: List<User>?) {
-        val userListAdapter = userList?.let { context?.let { it1 -> UserListAdapter(it1, it) } }
+    private fun updateUserListAdapter(userList: List<UserUIData>?) {
+        val userListAdapter = userList?.let { context?.let { it1 -> UserListAdapter(it) } }
         val userListRecyclerView = binding.myRecyclerView
         userListRecyclerView.adapter = userListAdapter
         userListRecyclerView.layoutManager = LinearLayoutManager(activity)

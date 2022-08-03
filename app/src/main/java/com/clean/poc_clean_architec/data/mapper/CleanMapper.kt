@@ -2,8 +2,8 @@ package com.clean.poc_clean_architec.data.mapper
 
 import com.clean.poc_clean_architec.data.model.UserListServerData
 import com.clean.poc_clean_architec.data.model.UserServerData
-import com.clean.poc_clean_architec.domain.model.User
 import com.clean.poc_clean_architec.domain.model.UserList
+import com.clean.poc_clean_architec.domain.model.UserUIData
 import javax.inject.Inject
 
 class CleanMapper @Inject constructor() {
@@ -16,9 +16,9 @@ class CleanMapper @Inject constructor() {
         )
     }
 
-    private fun toUser(userServerData: UserServerData): User {
-        return User(
-            id = userServerData.id,
+    fun toUserUIData(userServerData: UserServerData?): UserUIData {
+        return UserUIData(
+            id = userServerData!!.id,
             userEmail = userServerData.userEmail,
             userFirstName = userServerData.userFirstName,
             userLastName = userServerData.userLastName,
@@ -26,10 +26,10 @@ class CleanMapper @Inject constructor() {
         )
     }
 
-    private fun convertToUserList(userListServerData: List<UserServerData>): List<User> {
-        val listUser: MutableList<User> = mutableListOf()
+    private fun convertToUserList(userListServerData: List<UserServerData>): List<UserUIData> {
+        val listUser: MutableList<UserUIData> = mutableListOf()
         for (user in userListServerData) {
-            listUser.add(toUser(user))
+            listUser.add(toUserUIData(user))
         }
         return listUser.toList()
     }
