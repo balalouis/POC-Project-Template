@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.clean.poc_clean_architec.ui.SplashFragment"
+        android:name="com.clean.poc_clean_architec.ui.fragment.SplashFragment"
         android:label="SplashFragment"
         tools:layout="@layout/fragment_splash">
         <action
@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/userListFragment"
-        android:name="com.clean.poc_clean_architec.ui.UserListFragment"
+        android:name="com.clean.poc_clean_architec.ui.fragment.UserListFragment"
         android:label="UserFragment"
         tools:layout="@layout/fragment_user_list">
         <action
@@ -29,7 +29,7 @@
 
     <fragment
         android:id="@+id/userDetailFragment"
-        android:name="com.clean.poc_clean_architec.ui.UserDetailFragment"
+        android:name="com.clean.poc_clean_architec.ui.fragment.UserDetailFragment"
         android:label="fragment_user_detail"
         tools:layout="@layout/fragment_user_detail">
 

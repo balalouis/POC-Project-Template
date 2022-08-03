@@ -1,19 +1,16 @@
-package com.clean.poc_clean_architec.ui
+package com.clean.poc_clean_architec.ui.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.navigation.NavController
 import androidx.navigation.NavDirections
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.clean.poc_clean_architec.R
 import com.clean.poc_clean_architec.databinding.UserListViewRowBinding
 import com.clean.poc_clean_architec.domain.model.User
+import com.clean.poc_clean_architec.ui.fragment.UserListFragmentDirections
 import com.squareup.picasso.Picasso
 
 class UserListAdapter(private var context: Context, private var userModelList: List<User>) :

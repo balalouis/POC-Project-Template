@@ -1,4 +1,4 @@
-package com.clean.poc_clean_architec.ui
+package com.clean.poc_clean_architec.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.clean.poc_clean_architec.databinding.FragmentUserListBinding
 import com.clean.poc_clean_architec.domain.model.User
 import com.clean.poc_clean_architec.domain.model.UserUIState
+import com.clean.poc_clean_architec.ui.adapter.UserListAdapter
+import com.clean.poc_clean_architec.ui.viewmodel.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

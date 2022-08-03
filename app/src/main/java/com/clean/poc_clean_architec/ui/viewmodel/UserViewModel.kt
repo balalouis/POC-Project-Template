@@ -1,4 +1,4 @@
-package com.clean.poc_clean_architec.ui
+package com.clean.poc_clean_architec.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
