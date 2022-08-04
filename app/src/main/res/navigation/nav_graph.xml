@@ -12,8 +12,20 @@
         tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_Splash_to_LoginFragment"
-            app:destination="@id/userListFragment"
+            app:destination="@id/loginFragment"
             app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.clean.poc_clean_architec.ui.fragment.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_Login_to_UserListFragment"
+            app:destination="@id/userListFragment"
+            app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
     </fragment>
 
