@@ -15,8 +15,8 @@ class GetUserDetailRepoImpl @Inject constructor(
 ) : GetUserDetailRepo {
 
     override fun fetchUserDetail(userId: String): Flow<UserUIData> = flow {
-        val data = apiWebService.fetchUserDetail(userId)
-        val userUIData = cleanMapper.toUserUIData(data.userDetailServerData)
+        val userDetailServerRootData = apiWebService.fetchUserDetail(userId)
+        val userUIData = cleanMapper.toUserUIData(userDetailServerRootData.userServerData)
         emit(userUIData)
     }
 

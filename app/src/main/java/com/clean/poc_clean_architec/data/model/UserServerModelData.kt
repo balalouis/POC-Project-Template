@@ -37,3 +37,5 @@ data class UserServerData(
     var userAvatar: String = ""
 )
 
+data class UserDetailServerRootData(@SerializedName("data") var userServerData: UserServerData?)
+

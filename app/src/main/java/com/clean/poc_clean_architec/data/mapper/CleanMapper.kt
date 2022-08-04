@@ -28,8 +28,8 @@ class CleanMapper @Inject constructor() {
 
     private fun convertToUserList(userListServerData: List<UserServerData>): List<UserUIData> {
         val listUser: MutableList<UserUIData> = mutableListOf()
-        for (user in userListServerData) {
-            listUser.add(toUserUIData(user))
+        for (userServerData in userListServerData) {
+            listUser.add(toUserUIData(userServerData))
         }
         return listUser.toList()
     }
