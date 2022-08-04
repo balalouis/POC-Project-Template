@@ -8,3 +8,8 @@ data class LoginRequestModel(
 data class LoginResponseModel(
     val token: String
 )
+
+sealed class LoginUIState {
+    data class Success(var loginResponseModel: LoginResponseModel?) : LoginUIState()
+    data class Failure(var exception: Throwable) : LoginUIState()
+}
