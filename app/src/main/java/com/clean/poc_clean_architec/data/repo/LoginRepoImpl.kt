@@ -6,8 +6,9 @@ import com.clean.poc_clean_architec.domain.repo.LoginRepo
 import com.clean.poc_clean_architec.network.ApiWebService
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class LoginRepoImpl(var apiWebService: ApiWebService) : LoginRepo {
+class LoginRepoImpl @Inject constructor(var apiWebService: ApiWebService) : LoginRepo {
     override fun login(loginRequestModel: LoginRequestModel): Flow<LoginResponseModel> =
         flow {
             val loginResponseModel = apiWebService.loginApiCall(loginRequestModel)
