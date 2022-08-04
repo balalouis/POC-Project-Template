@@ -6,7 +6,7 @@ data class LoginRequestModel(
 )
 
 data class LoginResponseModel(
-    val token: String
+    val token: String = ""
 )
 
 sealed class LoginUIState {

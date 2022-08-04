@@ -3,8 +3,10 @@ package com.clean.poc_clean_architec.hilt
 import com.clean.poc_clean_architec.data.mapper.CleanMapper
 import com.clean.poc_clean_architec.data.repo.GetUserDetailRepoImpl
 import com.clean.poc_clean_architec.data.repo.GetUserListRepoImpl
+import com.clean.poc_clean_architec.data.repo.LoginRepoImpl
 import com.clean.poc_clean_architec.domain.repo.GetUserDetailRepo
 import com.clean.poc_clean_architec.domain.repo.GetUserListRepo
+import com.clean.poc_clean_architec.domain.repo.LoginRepo
 import com.clean.poc_clean_architec.network.ApiWebService
 import dagger.Module
 import dagger.Provides
@@ -23,5 +25,10 @@ object AppModule {
     @Provides
     fun provideGetUserDetailUseCases(apiService: ApiWebService, cleanMapper: CleanMapper): GetUserDetailRepo {
         return GetUserDetailRepoImpl(apiService, cleanMapper)
+    }
+
+    @Provides
+    fun provideLoginUseCases(apiService: ApiWebService): LoginRepo {
+        return LoginRepoImpl(apiService)
     }
 }
