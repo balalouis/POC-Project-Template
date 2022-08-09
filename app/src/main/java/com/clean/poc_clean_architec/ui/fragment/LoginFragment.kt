@@ -47,6 +47,11 @@ class LoginFragment : Fragment() {
 
             requestLoginApiCall(it, loginRequestModel)
         }
+
+        binding.tvNewToApp.setOnClickListener {
+            val action=LoginFragmentDirections.actionLoginToRegistrationFragment()
+            launchScreen(it,action)
+        }
     }
 
     private fun requestLoginApiCall(
