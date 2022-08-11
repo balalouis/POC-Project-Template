@@ -16,4 +16,9 @@ interface UserDao {
     @Query("SELECT * FROM user_table WHERE id = :id")
     fun getUserById(id: Int): Flow<UserUIData>
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertUserList(user: List<UserUIData>?)
+
+    @Query("SELECT * FROM user_table")
+    fun getAllUserUIData(): Flow<List<UserUIData>>
 }

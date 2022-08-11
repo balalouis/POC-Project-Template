@@ -21,8 +21,12 @@ import dagger.hilt.android.components.ViewModelComponent
 object AppModule {
 
     @Provides
-    fun provideGetUserListUseCases(apiService: ApiWebService, cleanMapper: CleanMapper): GetUserListRepo {
-        return GetUserListRepoImpl(apiService, cleanMapper)
+    fun provideGetUserListUseCases(
+        userDao: UserDao,
+        apiService: ApiWebService,
+        cleanMapper: CleanMapper
+    ): GetUserListRepo {
+        return GetUserListRepoImpl(userDao, apiService, cleanMapper)
     }
 
     @Provides
