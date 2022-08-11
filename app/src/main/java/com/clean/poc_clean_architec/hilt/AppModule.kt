@@ -10,6 +10,7 @@ import com.clean.poc_clean_architec.domain.repo.GetUserListRepo
 import com.clean.poc_clean_architec.domain.repo.LoginRepo
 import com.clean.poc_clean_architec.domain.repo.RegisterRepo
 import com.clean.poc_clean_architec.network.ApiWebService
+import com.clean.poc_clean_architec.room.UserDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,8 +26,12 @@ object AppModule {
     }
 
     @Provides
-    fun provideGetUserDetailUseCases(apiService: ApiWebService, cleanMapper: CleanMapper): GetUserDetailRepo {
-        return GetUserDetailRepoImpl(apiService, cleanMapper)
+    fun provideGetUserDetailUseCases(
+        userDao: UserDao,
+        apiService: ApiWebService,
+        cleanMapper: CleanMapper
+    ): GetUserDetailRepo {
+        return GetUserDetailRepoImpl(userDao, apiService, cleanMapper)
     }
 
     @Provides
@@ -35,7 +40,7 @@ object AppModule {
     }
 
     @Provides
-    fun provideRegisterUseCases(apiService: ApiWebService) : RegisterRepo{
+    fun provideRegisterUseCases(apiService: ApiWebService): RegisterRepo {
         return RegisterRepoImpl(apiService)
     }
 }

@@ -61,6 +61,10 @@ dependencies {
 private void setRoomDependency(){
     dependencies.implementation('androidx.room:room-runtime:2.4.2')
     dependencies.annotationProcessor('androidx.room:room-compiler:2.4.2')
+    dependencies.kapt('androidx.room:room-compiler:2.4.2')
+    dependencies.implementation('androidx.room:room-ktx:2.4.2')
+    dependencies.testImplementation('androidx.room:room-testing:2.4.2')
+    dependencies.implementation('androidx.room:room-paging:2.5.0-alpha01')
 }
 
 private void setNavigationComponentDependency(){

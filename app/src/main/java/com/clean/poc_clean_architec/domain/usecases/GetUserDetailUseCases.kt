@@ -4,5 +4,5 @@ import com.clean.poc_clean_architec.domain.repo.GetUserDetailRepo
 import javax.inject.Inject
 
 class GetUserDetailUseCases @Inject constructor(private val getUserDetailRepo: GetUserDetailRepo) {
-    fun getUserDetail(userId: String) = getUserDetailRepo.fetchUserDetail(userId)
+    suspend fun getUserDetail(userId: String) = getUserDetailRepo.fetchUserDetail(userId)
 }

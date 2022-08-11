@@ -1,16 +1,32 @@
 package com.clean.poc_clean_architec.domain.model
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
 data class UserList(
     var perPage: Int = 0,
     var totalPages: Int = 0,
     var userModelList: List<UserUIData>? = null
 )
 
+
+@Entity(tableName = "user_table")
 data class UserUIData(
+
+    @PrimaryKey(autoGenerate = true)
     var id: Int = 0,
+
+    @ColumnInfo("email")
     var userEmail: String? = null,
+
+    @ColumnInfo("first_name")
     var userFirstName: String = "",
+
+    @ColumnInfo("last_name")
     var userLastName: String = "",
+
+    @ColumnInfo("user_avatar")
     var userAvatar: String = ""
 )
 
