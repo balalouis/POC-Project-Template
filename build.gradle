@@ -9,6 +9,7 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10"
         classpath 'com.google.dagger:hilt-android-gradle-plugin:2.41'
         classpath('androidx.navigation:navigation-safe-args-gradle-plugin:2.5.1')
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.0"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -17,4 +18,39 @@ buildscript {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+task jacocoTestReport(type: JacocoReport) {
+
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+
+    def fileFilter = ['**/R.class', '**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*', '**/*Test*.*', 'android/**/*.*']
+    def debugTree = fileTree(dir: "${buildDir}/intermediates/classes/debug", excludes: fileFilter)
+    def mainSrc = "${project.projectDir}/src/main/java"
+    def javaTree = fileTree(dir: "$project.buildDir/intermediates/javac/devDebug/classes", excludes: fileFilter)
+//kotlin compiled classes
+    def kotlinTree = fileTree(dir: "$project.buildDir/tmp/kotlin-classes/devDebug", excludes: fileFilter)
+//...etc...
+
+    def execution1 = fileTree(dir: project.buildDir,
+            includes: ['jacoco/testDevDebugUnitTest.exec'])
+    def execution = fileTree(dir: project.buildDir,
+            includes: [
+                    "jacoco/testDevDebugUnitTest.exec",
+                    "outputs/code_coverage/devDebugAndroidTest/connected/*coverage.ec"])
+//    def file1 = fileTree(dir: "${buildDir}/jacoco/testDebugUnitTest.exec")
+    sourceDirectories.from(files([mainSrc]))
+    classDirectories.from(files([javaTree, kotlinTree]))
+//    classDirectories.from(files([kotlinTree]))
+//    classDirectories.from(files([debugTree]))
+    executionData.from(files([execution]))
+//    executionData.from()fileTree(dir: "$buildDir", includes: [
+//            "jacoco/testDebugUnitTest.exec",
+//            "outputs/code-coverage/connected/*coverage.ec"
+//    ])
+
+
 }

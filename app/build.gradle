@@ -4,6 +4,22 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'org.sonarqube'
+}
+
+sonarqube() {
+    properties {
+        property "sonar.projectName", "Dummy"
+        property "sonar.projectKey", "Dummy"
+        property "sonar.sourceEncoding", "UTF-8"
+        property "sonar.login", "admin"
+        property "sonar.password", "admin123"
+        property "sonar.applicationId", "com.clean.poc_clean_architec"
+        property "sonar.sources", "./src/main/java"
+        property "sonar.binaries", "/intermediates/classes/debug"
+        property "sonar.host.url", "http://localhost:9000"
+        property 'sonar.coverage.jacoco.xmlReportPaths','build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml'
+    }
 }
 
 android {
