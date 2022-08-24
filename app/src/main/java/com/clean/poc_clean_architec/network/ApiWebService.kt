@@ -1,6 +1,11 @@
 package com.clean.poc_clean_architec.network
 
-import com.clean.poc_clean_architec.data.model.*
+import com.clean.poc_clean_architec.login.data.model.LoginRequestModel
+import com.clean.poc_clean_architec.login.data.model.LoginResponseModel
+import com.clean.poc_clean_architec.registration.data.model.RegistrationRequestModel
+import com.clean.poc_clean_architec.registration.data.model.RegistrationResponseModel
+import com.clean.poc_clean_architec.user_detail.data.model.UserDetailServerRootData
+import com.clean.poc_clean_architec.user_list.data.model.UserListServerData
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
