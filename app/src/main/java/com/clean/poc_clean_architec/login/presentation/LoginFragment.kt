@@ -49,13 +49,13 @@ class LoginFragment : Fragment() {
 
                 requestLoginApiCall(it, loginRequestModel)
             } else {
-                showToastMessage("Data should not be empty")
+                showToastMessage(getString(R.string.empty_data))
             }
         }
 
         binding.tvNewToApp.setOnClickListener {
-            val action=LoginFragmentDirections.actionLoginToRegistrationFragment()
-            launchScreen(it,action)
+            val action = LoginFragmentDirections.actionLoginToRegistrationFragment()
+            launchScreen(it, action)
         }
     }
 
@@ -73,14 +73,15 @@ class LoginFragment : Fragment() {
                             val token = uiState.loginResponseModel?.token
                             if (token?.isNotEmpty() == true) {
                                 showSnackBar(view, getString(R.string.login_successfully))
-                                launchScreen(view, LoginFragmentDirections.actionLoginToUserListFragment())
+                                launchScreen(
+                                    view,
+                                    LoginFragmentDirections.actionLoginToUserListFragment()
+                                )
                                 showOrHideProgressBar(View.GONE)
-                            } else {
-                                showSnackBar(view, "token is empty")
                             }
                         }
                         is LoginUIState.Failure -> {
-                            showSnackBar(view, "" + uiState.exception.message)
+                            showToastMessage(getString(R.string.invalid_credential))
                             showOrHideProgressBar(View.GONE)
                         }
                     }
@@ -97,7 +98,8 @@ class LoginFragment : Fragment() {
         binding.loginProgressBar.visibility = showOrHide
     }
 
-    private fun buildLoginRequestObject(email: String, password: String) = LoginRequestModel(email, password)
+    private fun buildLoginRequestObject(email: String, password: String) =
+        LoginRequestModel(email, password)
 
     private fun launchScreen(view: View, action: NavDirections) {
         view.findNavController().navigate(action)
@@ -124,6 +126,6 @@ class LoginFragment : Fragment() {
     }
 
     private fun showToastMessage(message: String) {
-        Toast.makeText(activity, "" + message, Toast.LENGTH_LONG).show()
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 }

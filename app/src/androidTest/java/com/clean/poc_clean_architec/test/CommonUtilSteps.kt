@@ -36,7 +36,7 @@ class CommonUtilSteps {
 
     @Then("^I should see the \"([^\"]*)\"$")
     fun I_should_see_the(textToValidate: String) {
-        onView(withText(textToValidate)).inRoot(ToastMatcher())
+        onView(withText(textToValidate.trim())).inRoot(ToastMatcher())
             .check(matches(isDisplayed()))
     }
 
