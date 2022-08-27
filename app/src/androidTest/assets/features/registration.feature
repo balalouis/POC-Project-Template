@@ -1,4 +1,4 @@
-@login-feature
+@registration-feature
 Feature: Login and Registration screen validation
 
   Scenario: Validate registration ui
