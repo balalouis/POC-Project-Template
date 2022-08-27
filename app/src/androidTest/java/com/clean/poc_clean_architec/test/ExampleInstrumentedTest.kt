@@ -1,4 +1,4 @@
-package com.clean.poc_clean_architec
+package com.clean.poc_clean_architec.test
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
