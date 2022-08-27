@@ -3,6 +3,8 @@ package com.clean.poc_clean_architec.test
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.action.ViewActions.clearText
+import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.withId
@@ -50,12 +52,14 @@ class LoginScreenTest {
 
     @When("^I enter the username \"([^\"]*)\"$")
     fun i_enter_the_username(userName: String) {
-        onView(withId(R.id.et_username_login)).perform(ViewActions.typeText(userName), ViewActions.click())
+        onView(withId(R.id.et_username_login)).perform(clearText())
+        onView(withId(R.id.et_username_login)).perform(typeText(userName), ViewActions.click())
     }
 
     @When("^I enter the password \"([^\"]*)\"$")
     fun i_enter_the_password(password: String) {
-        onView(withId(R.id.et_password_login)).perform(ViewActions.typeText(password), ViewActions.click())
+        onView(withId(R.id.et_password_login)).perform(clearText())
+        onView(withId(R.id.et_password_login)).perform(typeText(password), ViewActions.click())
     }
 
     @Then("^I should able to see the entered input \"([^\"]*)\" and \"([^\"]*)\"$")
