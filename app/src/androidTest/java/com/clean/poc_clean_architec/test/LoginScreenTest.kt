@@ -75,7 +75,7 @@ class LoginScreenTest {
         onView(withId(R.id.btnLogin)).perform(ViewActions.click())
     }
 
-    @When("^I press register button$")
+    @When("^I press register button from login_screen$")
     fun i_press_register_button_from_login_screen() {
         onView(withId(R.id.tv_new_to_app)).perform(ViewActions.click())
     }
