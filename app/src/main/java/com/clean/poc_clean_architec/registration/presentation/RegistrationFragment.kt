@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
@@ -48,15 +50,25 @@ class RegistrationFragment : Fragment() {
         }
 
         binding.registerButton.setOnClickListener {
-            showOrHideProgressBar(View.VISIBLE)
-            val registrationRequestModel = buildRegisterRequestObject(
-                binding.etEmail.text.toString(), binding.etPasswordRegistration.text.toString()
-            )
-            requestApiCall(view, registrationRequestModel)
+            if (validateUserInput(
+                    binding.etUsernameRegistration,
+                    binding.etEmail,
+                    binding.etPasswordRegistration
+                )
+            ) {
+                showOrHideProgressBar(View.VISIBLE)
+                val registrationRequestModel = buildRegisterRequestObject(
+                    binding.etEmail.text.toString(), binding.etPasswordRegistration.text.toString()
+                )
+                requestApiCall(view, registrationRequestModel)
+            }else{
+                showToastMessage("Data should not be empty")
+            }
         }
     }
 
-    private fun buildRegisterRequestObject(email: String, password: String) = RegistrationRequestModel(email, password)
+    private fun buildRegisterRequestObject(email: String, password: String) =
+        RegistrationRequestModel(email, password)
 
     private fun launchScreen(view: View, action: NavDirections) {
         view.findNavController().navigate(action)
@@ -82,7 +94,8 @@ class RegistrationFragment : Fragment() {
                             if (uiState.registrationResponseModel?.token?.isNotEmpty() == true) {
                                 showSnackBar(view, getString(R.string.register_successfully))
                                 launchScreen(
-                                    view, RegistrationFragmentDirections.actionRegistrationToUserListFragment()
+                                    view,
+                                    RegistrationFragmentDirections.actionRegistrationToUserListFragment()
                                 )
                                 showOrHideProgressBar(View.GONE)
                             } else {
@@ -98,4 +111,45 @@ class RegistrationFragment : Fragment() {
             }
         }
     }
+
+    private fun validateUserInput(
+        editTextUserName: EditText,
+        editTextPassword: EditText,
+        editTextConfirmPassword: EditText
+    ): Boolean {
+        return validateUserName(editTextUserName) && validatePassword(editTextPassword) && validateConfirmPassword(
+            editTextConfirmPassword
+        )
+    }
+
+    private fun validateUserName(editTextUserName: EditText): Boolean {
+        return editTextUserName.text.isNotEmpty() && validateUserNameLength(editTextUserName.text.toString())
+    }
+
+    fun validateUserNameLength(userName: String): Boolean {
+        return userName.length > 5
+    }
+
+    private fun validatePassword(editTextPassword: EditText): Boolean {
+        return editTextPassword.text.isNotEmpty() && validatePasswordLength(editTextPassword.text.toString())
+    }
+
+    fun validatePasswordLength(password: String): Boolean {
+        return password.length > 4
+    }
+
+    private fun validateConfirmPassword(editTextConfirmPassword: EditText): Boolean {
+        return editTextConfirmPassword.text.isNotEmpty() && validateConfirmPasswordLength(
+            editTextConfirmPassword.text.toString()
+        )
+    }
+
+    fun validateConfirmPasswordLength(password: String): Boolean {
+        return password.length > 4
+    }
+
+    private fun showToastMessage(message: String) {
+        Toast.makeText(activity, "" + message, Toast.LENGTH_LONG).show()
+    }
+
 }

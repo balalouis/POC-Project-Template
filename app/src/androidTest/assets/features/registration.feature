@@ -21,6 +21,8 @@ Feature: Login and Registration screen validation
     And I should not see the keyboard
     When I enter the password registration ""
     And I should not see the keyboard
+    Then I press register button
+    Then I should see the "Data should not be empty"
     When I enter the username registration "eve.holt@reqres.in"
     And I should not see the keyboard
     And I enter the email registration "eve.holt@reqres.in"
